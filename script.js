@@ -1,4 +1,4 @@
-// ⚠️ आपकी अपडेट की हुई gnews API key यहाँ सुरक्षित है
+
 const NEWS_API_KEY = '';
 const GEMINI_API_KEY = '';
 
