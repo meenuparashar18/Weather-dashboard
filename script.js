@@ -1,6 +1,6 @@
 // ⚠️ आपकी अपडेट की हुई gnews API key यहाँ सुरक्षित है
-const NEWS_API_KEY = '2e1ac6a1467541ab6c91ad766494b440';
-const GEMINI_API_KEY = 'AQ.Ab8RN6L7dxcig-6zJ8qWSLuRFJJ_AboiPJn7pNJhvgbLVhh8-Q';
+const NEWS_API_KEY = '';
+const GEMINI_API_KEY = '';
 
 const WMO_ICONS = {
   0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
