@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-API Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>⚡ InfoDash</h1>
+  <span id="last-updated"></span>
+</header>
+ 
+<div class="search-bar">
+  <input type="text" id="city-input" placeholder="Enter city name..." />
+  <button onclick="fetchAll()">Search</button>
+</div>
+ 
+<div class="recent-searches" id="recent-searches"></div>
+ 
+<div class="dashboard">
+  <div class="weather-panel">
+    <div class="card" id="weather-card">
+      <div class="card-label">Current Weather</div>
+      <div class="skeleton sk-big"></div>
+      <div class="skeleton sk-line" style="width:60%"></div>
+      <div class="skeleton sk-line" style="width:40%"></div>
+    </div>
+    <div class="card" id="forecast-card" style="display:none">
+      <div class="card-label">3-Day Forecast</div>
+      <div class="forecast-row" id="forecast-row"></div>
+    </div>
+    <div class="error-box" id="weather-error"></div>
+  </div>
+ 
+  <div class="news-panel">
+    <div class="card-label" style="padding:0 4px">Top Headlines</div>
+    <div class="news-grid" id="news-grid">
+      <div class="loading-news">
+        <div class="skeleton sk-line" style="width:80%; margin-bottom:14px"></div>
+        <div class="skeleton sk-line" style="width:60%"></div>
+      </div>
+    </div>
+    <div class="error-box" id="news-error"></div>
+  </div>
+</div>
+ 
+<div class="ai-section">
+  <div class="ai-panel">
+    <div class="ai-header">
+      <div class="ai-header-left">
+        <div class="ai-dot"></div>
+        <div class="ai-title">✦ Gemini AI Assistant</div>
+      </div>
+      <button class="ai-clear-btn" onclick="clearChat()">Clear Chat</button>
+    </div>
+ 
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg ai">
+        <div class="msg-avatar">✦</div>
+        <div>
+          <div class="msg-bubble">Hello! I'm your AI assistant. Ask me anything about weather, news, or any topic you're curious about.</div>
+          <div class="msg-time">Just now</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="ai-suggestions" id="ai-suggestions">
+      <div class="suggestion-chip" onclick="useSuggestion(this)">What should I wear today?</div>
+      <div class="suggestion-chip" onclick="useSuggestion(this)">Is it good weather for travel?</div>
+      <div class="suggestion-chip" onclick="useSuggestion(this)">Summarize today's news</div>
+      <div class="suggestion-chip" onclick="useSuggestion(this)">Tips for rainy weather</div>
+    </div>
+ 
+   
+ <div class="ai-input-row">
+  <input type="text" id="ai-input" placeholder="Ask AI about weather or news..." />
+  <button id="ai-send-btn" onclick="sendMessage()">Send</button> 
+</div>
+  </div>
+</div>
+
+<script src="script.js">
+ 
+</script>
+</body>
+</html>
