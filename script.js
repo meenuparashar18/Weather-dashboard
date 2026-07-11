@@ -267,26 +267,26 @@ async function sendMessage() {
   const userText = input.value.trim();
   if (!userText) return;
 
-  // 1. UI पर यूजर का मैसेज दिखाएं
+
   input.value = '';
   appendMessage('user', userText);
 
-  // 2. चैट हिस्ट्री अपडेट करें
+ 
   const history = getChatHistory();
   history.push({ role: 'user', text: userText });
   saveChatHistory(history);
 
-  // 3. टाइपिंग इंडिकेटर दिखाएं
+ 
   showtyping();
 
-  // 4. सिस्टम कॉन्टेक्स्ट तैयार करें
+ 
   const systemContext = `You are a helpful assistant embedded in a weather and news dashboard called InfoDash.
 Current dashboard data:
 - Weather: ${currentWeatherContext || 'No weather data loaded'}
 - News: ${currentNewsContext || 'No news loaded yet'}
 Keep answers concise and friendly. If the user asks about weather or news, use the context above.`;
 
-  // 5. Gemini API के लिए सही पेलोड ढांचा (Payload Structure)
+  
   const contents = [
     {
       role: 'user',
@@ -295,7 +295,7 @@ Keep answers concise and friendly. If the user asks about weather or news, use t
   ];
 
   try {
-    // अपनी नई API Key यहाँ डालें (पुरानी ब्लॉक हो चुकी है)
+   
    const response = await fetch(
 `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
 {
@@ -311,7 +311,6 @@ Keep answers concise and friendly. If the user asks about weather or news, use t
     const data = await response.json();
     removeTyping();
 
-    // API एरर चेकिंग को मजबूत बनाना
     if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
       const aiText = data.candidates[0].content.parts[0].text;
       appendMessage('ai', aiText);
@@ -320,7 +319,7 @@ Keep answers concise and friendly. If the user asks about weather or news, use t
       updatedHistory.push({ role: 'ai', text: aiText });
       saveChatHistory(updatedHistory);
     } else {
-      // अगर API कोई एरर मैसेज भेजती है तो उसे कंसोल में देखें
+    
       console.error('API Error Response:', data);
       appendMessage('ai', `API Error: ${data.error?.message || 'Please check your Gemini API key.'}`);
     }
@@ -331,7 +330,7 @@ Keep answers concise and friendly. If the user asks about weather or news, use t
   }
 }
 
-// Event Listeners
+
 document.getElementById('city-input').addEventListener('keydown', e => {
   if (e.key === 'Enter') fetchAll();
 });
@@ -340,7 +339,7 @@ document.getElementById('ai-input').addEventListener('keydown', e => {
   if (e.key === 'Enter') sendMessage();
 });
 
-// Initialization
+
 renderChips();
 document.getElementById('city-input').value = 'Delhi';
 fetchAll();
